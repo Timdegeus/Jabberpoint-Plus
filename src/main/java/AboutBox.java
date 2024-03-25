@@ -1,5 +1,3 @@
-package org.example;
-
 import java.awt.Frame;
 import javax.swing.JOptionPane;
 

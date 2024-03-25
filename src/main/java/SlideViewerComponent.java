@@ -1,7 +1,3 @@
-package org.example;
-
-import org.example.Slide;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Dimension;

@@ -1,5 +1,3 @@
-package org.example;
-
 import javax.swing.JOptionPane;
 
 import java.io.IOException;
