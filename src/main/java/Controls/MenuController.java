@@ -51,7 +51,7 @@ public class MenuController extends MenuBar {
 	protected static final String LOADERR = "Load Error";
 	protected static final String SAVEERR = "Save Error";
 
-	public MenuController(Frame frame, Presentation pres)
+	public MenuController(Frame frame, Presentation pres) // Voeg de items toe voor in het menu
 	{
 		parent = frame;
 		presentation = pres;
