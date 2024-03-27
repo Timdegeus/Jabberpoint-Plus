@@ -10,8 +10,9 @@ public class PreviousSlideCommand extends Command
     }
 
     @Override
-    public void execute()
+    public boolean execute()
     {
-
+        presentation.prevSlide();
+        return false;
     }
 }

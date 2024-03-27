@@ -10,8 +10,8 @@ public class GoToSlideCommand extends Command
     }
 
     @Override
-    public void execute()
+    public boolean execute()
     {
-
+        return false;
     }
 }

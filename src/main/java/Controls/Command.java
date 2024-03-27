@@ -4,12 +4,12 @@ import Presentation.Presentation;
 
 public abstract class Command
 {
-    private Presentation presentation;
+    public Presentation presentation;
 
     public Command(Presentation presentation)
     {
         this.presentation = presentation;
     }
 
-    public abstract void execute();
+    public abstract boolean execute();
 }

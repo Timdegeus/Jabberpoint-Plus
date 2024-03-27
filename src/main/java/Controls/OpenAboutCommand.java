@@ -10,8 +10,8 @@ public class OpenAboutCommand extends Command
     }
 
     @Override
-    public void execute()
+    public boolean execute()
     {
-
+        return false;
     }
 }

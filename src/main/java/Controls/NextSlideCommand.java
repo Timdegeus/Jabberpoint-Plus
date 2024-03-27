@@ -10,8 +10,9 @@ public class NextSlideCommand extends Command
     }
 
     @Override
-    public void execute()
+    public boolean execute()
     {
-
+        presentation.nextSlide();
+        return false;
     }
 }

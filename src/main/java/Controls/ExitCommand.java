@@ -10,8 +10,9 @@ public class ExitCommand extends Command
     }
 
     @Override
-    public void execute()
+    public boolean execute()
     {
-
+        presentation.exit(0);
+        return false;
     }
 }

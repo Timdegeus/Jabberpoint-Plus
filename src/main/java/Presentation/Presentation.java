@@ -2,6 +2,7 @@ package Presentation;
 
 import java.util.ArrayList;
 
+import Controls.Command;
 import SlidePackage.Slide;
 import SlideViewer.SlideViewerComponent;
 

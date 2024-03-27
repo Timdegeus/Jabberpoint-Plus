@@ -121,7 +121,7 @@ public class MenuController extends MenuBar {
 		{
 			public void actionPerformed(ActionEvent actionEvent)
 			{
-				presentation.exit(0);
+				new ExitCommand(presentation).execute();
 			}
 		});
 
@@ -134,7 +134,7 @@ public class MenuController extends MenuBar {
 		{
 			public void actionPerformed(ActionEvent actionEvent)
 			{
-				presentation.nextSlide();
+				new NextSlideCommand(presentation).execute();
 			}
 		});
 
@@ -144,7 +144,7 @@ public class MenuController extends MenuBar {
 		{
 			public void actionPerformed(ActionEvent actionEvent)
 			{
-				presentation.prevSlide();
+				new PreviousSlideCommand(presentation).execute();
 			}
 		});
 

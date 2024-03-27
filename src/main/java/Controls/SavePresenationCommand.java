@@ -10,8 +10,8 @@ public class SavePresenationCommand extends Command
     }
 
     @Override
-    public void execute()
+    public boolean execute()
     {
-
+        return false;
     }
 }
