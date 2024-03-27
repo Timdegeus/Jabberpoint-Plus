@@ -1,3 +1,10 @@
+package Controls;
+
+import Acces.Accessor;
+import Acces.XMLAccessor;
+import Presentation.Presentation;
+import SlidePackage.AboutBox;
+
 import java.awt.MenuBar;
 import java.awt.Frame;
 import java.awt.Menu;

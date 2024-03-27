@@ -1,9 +1,11 @@
+package SlidePackage;
+
 import java.awt.Color;
 import java.awt.Font;
 
-/** <p>Style staat voor Indent, Color, Font and Leading.</p>
+/** <p>Slide.Style staat voor Indent, Color, Font and Leading.</p>
  * <p>De koppeling tussen style-nummer en item-level is nu direct:
- * in Slide wordt de style opgehaald voor een item
+ * in Slide.Slide wordt de style opgehaald voor een item
  * met als style-nummer het item-level.</p>
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn

@@ -1,8 +1,15 @@
+package Presentation;
+
+import Acces.Accessor;
+import Acces.XMLAccessor;
+import SlidePackage.Style;
+import SlideViewer.SlideViewerFrame;
+
 import javax.swing.JOptionPane;
 
 import java.io.IOException;
 
-/** JabberPoint Main Programma
+/** Presentation.JabberPoint Main Programma
  * <p>This program is distributed under the terms of the accompanying
  * COPYRIGHT.txt file (which is NOT the GNU General Public License).
  * Please read it. Your use of the software constitutes acceptance

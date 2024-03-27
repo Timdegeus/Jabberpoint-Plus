@@ -1,3 +1,9 @@
+package SlideViewer;
+
+import Controls.KeyController;
+import Controls.MenuController;
+import Presentation.Presentation;
+
 import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowAdapter;
@@ -40,7 +46,7 @@ public class SlideViewerFrame extends JFrame {
 		getContentPane().add(slideViewerComponent);
 		addKeyListener(new KeyController(presentation)); // een controller toevoegen
 		setMenuBar(new MenuController(this, presentation));	// nog een controller toevoegen
-		setSize(new Dimension(WIDTH, HEIGHT)); // Dezelfde maten als Slide hanteert.
+		setSize(new Dimension(WIDTH, HEIGHT)); // Dezelfde maten als Slide.Slide hanteert.
 		setVisible(true);
 	}
 }
