@@ -24,7 +24,7 @@ public class Presentation {
 	private int currentSlideNumber = 0; // het slidenummer van de huidige Slide.Slide
 	private SlideViewerComponent slideViewComponent = null; // de viewcomponent voor de Slides
 
-	private static final int beginSlide = 0;
+	private static final int BEGIN_SLIDE = 0;
 
 	public Presentation()
 	{
@@ -78,7 +78,7 @@ public class Presentation {
 	// ga naar de vorige slide tenzij je aan het begin van de presentatie bent
 	public void prevSlide()
 	{
-		if (currentSlideNumber > beginSlide)
+		if (currentSlideNumber > BEGIN_SLIDE)
 		{
 			setSlideNumber(currentSlideNumber - 1);
 	    }

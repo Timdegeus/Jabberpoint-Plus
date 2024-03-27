@@ -1,5 +1,17 @@
 package Controls;
 
-public class OpenFileCommand
+import Presentation.Presentation;
+
+public class OpenFileCommand extends Command
 {
+    public OpenFileCommand(Presentation presentation)
+    {
+        super(presentation);
+    }
+
+    @Override
+    public void execute()
+    {
+
+    }
 }
