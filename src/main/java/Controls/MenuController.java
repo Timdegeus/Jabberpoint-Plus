@@ -130,7 +130,7 @@ public class MenuController extends MenuBar {
 		{
 			public void actionPerformed(ActionEvent actionEvent)
 			{
-				new GoToSlideCommand(presentation).execute();
+				new GoToSlideCommand(parent, presentation).execute();
 			}
 		});
 
