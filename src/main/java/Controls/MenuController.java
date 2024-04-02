@@ -65,20 +65,7 @@ public class MenuController extends MenuBar {
 		{
 			public void actionPerformed(ActionEvent actionEvent)
 			{
-				presentation.clear();
-				Accessor xmlAccessor = new XMLAccessor();
-
-				try
-				{
-					xmlAccessor.loadFile(presentation, TESTFILE);
-					presentation.setSlideNumber(0);
-				}
-				catch (IOException exc)
-				{
-					JOptionPane.showMessageDialog(parent, IOEX + exc, 
-         			LOADERR, JOptionPane.ERROR_MESSAGE);
-				}
-				parent.repaint();
+				new OpenFileCommand(parent, presentation).execute();
 			}
 		} );
 
@@ -88,8 +75,7 @@ public class MenuController extends MenuBar {
 		{
 			public void actionPerformed(ActionEvent actionEvent)
 			{
-				presentation.clear();
-				parent.repaint();
+				new NewSlideCommand(parent, presentation).execute();
 			}
 		});
 
@@ -99,17 +85,7 @@ public class MenuController extends MenuBar {
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				Accessor xmlAccessor = new XMLAccessor();
-
-				try
-				{
-					xmlAccessor.saveFile(presentation, SAVEFILE);
-				}
-				catch (IOException exc)
-				{
-					JOptionPane.showMessageDialog(parent, IOEX + exc, 
-							SAVEERR, JOptionPane.ERROR_MESSAGE);
-				}
+				new SavePresenationCommand(parent, presentation).execute();
 			}
 		});
 
@@ -154,9 +130,7 @@ public class MenuController extends MenuBar {
 		{
 			public void actionPerformed(ActionEvent actionEvent)
 			{
-				String pageNumberStr = JOptionPane.showInputDialog((Object)PAGENR);
-				int pageNumber = Integer.parseInt(pageNumberStr);
-				presentation.setSlideNumber(pageNumber - 1);
+				new GoToSlideCommand(presentation).execute();
 			}
 		});
 
@@ -169,7 +143,7 @@ public class MenuController extends MenuBar {
 		{
 			public void actionPerformed(ActionEvent actionEvent)
 			{
-				AboutBox.show(parent);
+				new OpenAboutCommand(parent).execute();
 			}
 		});
 

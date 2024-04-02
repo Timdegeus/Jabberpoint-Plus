@@ -2,17 +2,18 @@ package Controls;
 
 import Presentation.Presentation;
 
-public class PreviousSlideCommand extends Command
+public class PreviousSlideCommand implements Command
 {
+   private final Presentation presentation;
+
     public PreviousSlideCommand(Presentation presentation)
     {
-        super(presentation);
+        this.presentation = presentation;
     }
 
     @Override
-    public boolean execute()
+    public void execute()
     {
         presentation.prevSlide();
-        return false;
     }
 }

@@ -2,16 +2,23 @@ package Controls;
 
 import Presentation.Presentation;
 
-public class NewSlideCommand extends Command
+import java.awt.*;
+
+public class NewSlideCommand implements Command
 {
-    public NewSlideCommand(Presentation presentation)
+    private final Frame parent;
+    private final Presentation presentation;
+
+    public NewSlideCommand(Frame parent, Presentation presentation)
     {
-        super(presentation);
+        this.parent = parent;
+        this.presentation = presentation;
     }
 
     @Override
-    public boolean execute()
+    public void execute()
     {
-        return false;
+        presentation.clear();
+        parent.repaint();
     }
 }

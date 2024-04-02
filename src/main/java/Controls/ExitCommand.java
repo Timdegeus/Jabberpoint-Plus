@@ -2,17 +2,18 @@ package Controls;
 
 import Presentation.Presentation;
 
-public class ExitCommand extends Command
+public class ExitCommand implements Command
 {
+    private final Presentation presentation;
+
     public ExitCommand(Presentation presentation)
     {
-        super(presentation);
+       this.presentation = presentation;
     }
 
     @Override
-    public boolean execute()
+    public void execute()
     {
         presentation.exit(0);
-        return false;
     }
 }

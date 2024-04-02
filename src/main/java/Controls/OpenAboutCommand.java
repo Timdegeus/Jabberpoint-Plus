@@ -2,16 +2,20 @@ package Controls;
 
 import Presentation.Presentation;
 
-public class OpenAboutCommand extends Command
+import java.awt.*;
+
+public class OpenAboutCommand implements Command
 {
-    public OpenAboutCommand(Presentation presentation)
+    private final Frame parent;
+
+    public OpenAboutCommand(Frame parent)
     {
-        super(presentation);
+        this.parent = parent;
     }
 
     @Override
-    public boolean execute()
+    public void execute()
     {
-        return false;
+        AboutBox.show(parent);
     }
 }
