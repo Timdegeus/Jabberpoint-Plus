@@ -111,8 +111,8 @@ public class Presentation
 	// Geef een slide met een bepaald slidenummer
 	public Slide getSlide(int number)
 	{
-		if (number < 0 || number >= getSize()){
-
+		if (number < 0 || number >= getSize())
+		{
 			return null;
 	    }
 
