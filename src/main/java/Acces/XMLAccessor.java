@@ -11,10 +11,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import Presentation.Presentation;
-import SlidePackage.BitmapItem;
-import SlidePackage.Slide;
-import SlidePackage.SlideItem;
-import SlidePackage.TextItem;
+import SlidePackage.*;
 import org.xml.sax.SAXException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -98,6 +95,8 @@ public class XMLAccessor extends Accessor {
         int level = 1; // default
         NamedNodeMap attributes = item.getAttributes();
         String leveltext = attributes.getNamedItem(LEVEL).getTextContent();
+        ItemCreator textItemCreator = new TextItemCreator();
+        ItemCreator bitmapItemCreator = new BitmapItemCreator();
         if (leveltext != null) {
             try {
                 level = Integer.parseInt(leveltext);
@@ -108,11 +107,11 @@ public class XMLAccessor extends Accessor {
         }
         String type = attributes.getNamedItem(KIND).getTextContent();
         if (TEXT.equals(type)) {
-            slide.append(new TextItem(level, item.getTextContent()));
+            slide.createSlideItem(level, item.getTextContent(), textItemCreator);
         }
         else {
             if (IMAGE.equals(type)) {
-                slide.append(new BitmapItem(level, item.getTextContent()));
+                slide.createSlideItem(level, item.getTextContent(), bitmapItemCreator);
             }
             else {
                 System.err.println(UNKNOWNTYPE);
