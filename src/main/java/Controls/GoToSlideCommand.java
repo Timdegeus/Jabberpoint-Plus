@@ -13,7 +13,6 @@ public class GoToSlideCommand implements Command
 {
     private final Frame parent;
     private final Presentation presentation;
-    private String errorMessage;
 
     public GoToSlideCommand(Frame parent, Presentation presentation)
     {
@@ -35,7 +34,8 @@ public class GoToSlideCommand implements Command
         }
         else
         {
-            errorMessage = "The provided input is not valid. Please enter a number.\n Provided input: " + pageNumberStr;
+            String errorMessage = "The provided input is not valid. Please enter a number.\n Provided input: " + pageNumberStr;
+
             ErrorBox.show(parent, errorMessage);
             System.out.println("Provided input is not a number. Input: " + pageNumberStr);
         }
