@@ -15,70 +15,88 @@ import java.util.Vector;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-public class Slide {
-	public final static int WIDTH = 1200;
-	public final static int HEIGHT = 800;
-	protected String title; // de titel wordt apart bewaard
-	protected Vector<SlideItem> items; // de slide-items worden in een Vector bewaard
+public class Slide 
+{
+    public final static int WIDTH = 1200;
+    public final static int HEIGHT = 800;
+    protected String title; // de titel wordt apart bewaard
+    protected Vector<SlideItem> items; // de slide-items worden in een Vector bewaard
 
-	public Slide() {
-		items = new Vector<SlideItem>();
-	}
+    public Slide() 
+    {
+        items = new Vector<SlideItem>();
+    }
 
-	// Voeg een Slide.SlideItem toe
-	public void append(SlideItem anItem) {
-		items.addElement(anItem);
-	}
+    // Voeg een Slide.SlideItem toe
+    public void append(SlideItem anItem) 
+    {
+        items.addElement(anItem);
+    }
 
-	// geef de titel van de slide
-	public String getTitle() {
-		return title;
-	}
+    // geef de titel van de slide
+    public String getTitle() 
+    {
+        return title;
+    }
 
-	// verander de titel van de slide
-	public void setTitle(String newTitle) {
-		title = newTitle;
-	}
+    // verander de titel van de slide
+    public void setTitle(String newTitle) 
+    {
+        title = newTitle;
+    }
 
-	// Maak een Slide.TextItem van String, en voeg het Slide.TextItem toe
-	public void append(int level, String message) {
-		append(new TextItem(level, message));
-	}
+    // Maak een Slide.TextItem van String, en voeg het Slide.TextItem toe
+    public void append(int level, String message) 
+    {
+        append(new TextItem(level, message));
+    }
 
-	// geef het betreffende Slide.SlideItem
-	public SlideItem getSlideItem(int number) {
-		return (SlideItem)items.elementAt(number);
-	}
+    // geef het betreffende Slide.SlideItem
+    public SlideItem getSlideItem(int number) 
+    {
+        return (SlideItem)items.elementAt(number);
+    }
 
-	// geef alle SlideItems in een Vector
-	public Vector<SlideItem> getSlideItems() {
-		return items;
-	}
+    // geef alle SlideItems in een Vector
+    public Vector<SlideItem> getSlideItems() 
+    {
+        return items;
+    }
 
-	// geef de afmeting van de Slide.Slide
-	public int getSize() {
-		return items.size();
-	}
+    // geef de afmeting van de Slide.Slide
+    public int getSize() 
+    {
+        return items.size();
+    }
 
-	// teken de slide
-	public void draw(Graphics g, Rectangle area, ImageObserver view) {
-		float scale = getScale(area);
-	    int y = area.y;
-	// De titel wordt apart behandeld
-	    SlideItem slideItem = new TextItem(0, getTitle());
-	    Style style = Style.getStyle(slideItem.getLevel());
-	    slideItem.draw(area.x, y, scale, g, style, view);
-	    y += slideItem.getBoundingBox(g, view, scale, style).height;
-	    for (int number=0; number<getSize(); number++) {
-	      slideItem = (SlideItem)getSlideItems().elementAt(number);
-	      style = Style.getStyle(slideItem.getLevel());
-	      slideItem.draw(area.x, y, scale, g, style, view);
-	      y += slideItem.getBoundingBox(g, view, scale, style).height;
-	    }
-	  }
+    // teken de slide
+    public void draw(Graphics g, Rectangle area, ImageObserver view) 
+    {
+        float scale = getScale(area);
+        int y = area.y;
+        // De titel wordt apart behandeld
+        SlideItem slideItem = new TextItem(0, getTitle());
+        Style style = Style.getStyle(slideItem.getLevel());
+        slideItem.draw(area.x, y, scale, g, style, view);
+        y += slideItem.getBoundingBox(g, view, scale, style).height;
+        for (int number=0; number<getSize(); number++) {
+            slideItem = (SlideItem)getSlideItems().elementAt(number);
+            style = Style.getStyle(slideItem.getLevel());
+            slideItem.draw(area.x, y, scale, g, style, view);
+            y += slideItem.getBoundingBox(g, view, scale, style).height;
+        }
+    }
 
-	// geef de schaal om de slide te kunnen tekenen
-	private float getScale(Rectangle area) {
-		return Math.min(((float)area.width) / ((float)WIDTH), ((float)area.height) / ((float)HEIGHT));
-	}
+    // geef de schaal om de slide te kunnen tekenen
+    private float getScale(Rectangle area) 
+    {
+        return Math.min(((float)area.width) / ((float)WIDTH), ((float)area.height) / ((float)HEIGHT));
+    }
+
+    // maakt een SlideItem doormiddel van een ItemCreator, voegt het SlideItem vervolgens toe aan de slide
+    public void createSlideItem(int level, String string, ItemCreator itemCreator)
+    {
+        SlideItem slideItem = itemCreator.createSlideItem(level, string);
+        append(slideItem);
+    }
 }

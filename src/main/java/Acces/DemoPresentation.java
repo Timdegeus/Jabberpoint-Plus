@@ -1,8 +1,7 @@
 package Acces;
 
 import Presentation.Presentation;
-import SlidePackage.BitmapItem;
-import SlidePackage.Slide;
+import SlidePackage.*;
 
 /** Een ingebouwde demo-presentatie
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
@@ -14,47 +13,51 @@ import SlidePackage.Slide;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-class DemoPresentation extends Accessor {
+class DemoPresentation extends Accessor 
+{
+    ItemCreator textItemCreator = new TextItemCreator();
+    ItemCreator bitmapItemCreator = new BitmapItemCreator();
+    public void loadFile(Presentation presentation, String unusedFilename) 
+    {
+        presentation.setTitle("Demo Presentation.Presentation");
+        Slide slide;
+        slide = new Slide();
+        slide.setTitle("Presentation.JabberPoint");
+        slide.createSlideItem(1, "Het Java Presentatie Tool", textItemCreator);
+        slide.createSlideItem(2, "Copyright (c) 1996-2000: Ian Darwin", textItemCreator);
+        slide.createSlideItem(2, "Copyright (c) 2000-now:", textItemCreator);
+        slide.createSlideItem(2, "Gert Florijn en Sylvia Stuurman", textItemCreator);
+        slide.createSlideItem(4, "Presentation.JabberPoint aanroepen zonder bestandsnaam", textItemCreator);
+        slide.createSlideItem(4, "laat deze presentatie zien", textItemCreator);
+        slide.createSlideItem(1, "Navigeren:", textItemCreator);
+        slide.createSlideItem(3, "Volgende slide: PgDn of Enter", textItemCreator);
+        slide.createSlideItem(3, "Vorige slide: PgUp of up-arrow", textItemCreator);
+        slide.createSlideItem(3, "Stoppen: q or Q", textItemCreator);
+        presentation.append(slide);
 
-	public void loadFile(Presentation presentation, String unusedFilename) {
-		presentation.setTitle("Demo Presentation.Presentation");
-		Slide slide;
-		slide = new Slide();
-		slide.setTitle("Presentation.JabberPoint");
-		slide.append(1, "Het Java Presentatie Tool");
-		slide.append(2, "Copyright (c) 1996-2000: Ian Darwin");
-		slide.append(2, "Copyright (c) 2000-now:");
-		slide.append(2, "Gert Florijn en Sylvia Stuurman");
-		slide.append(4, "Presentation.JabberPoint aanroepen zonder bestandsnaam");
-		slide.append(4, "laat deze presentatie zien");
-		slide.append(1, "Navigeren:");
-		slide.append(3, "Volgende slide: PgDn of Enter");
-		slide.append(3, "Vorige slide: PgUp of up-arrow");
-		slide.append(3, "Stoppen: q or Q");
-		presentation.append(slide);
+        slide = new Slide();
+        slide.setTitle("Demonstratie van levels en stijlen");
+        slide.createSlideItem(1, "Level 1", textItemCreator);
+        slide.createSlideItem(2, "Level 2", textItemCreator);
+        slide.createSlideItem(1, "Nogmaals level 1", textItemCreator);
+        slide.createSlideItem(1, "Level 1 heeft stijl nummer 1", textItemCreator);
+        slide.createSlideItem(2, "Level 2 heeft stijl nummer 2", textItemCreator);
+        slide.createSlideItem(3, "Zo ziet level 3 er uit", textItemCreator);
+        slide.createSlideItem(4, "En dit is level 4", textItemCreator);
+        presentation.append(slide);
 
-		slide = new Slide();
-		slide.setTitle("Demonstratie van levels en stijlen");
-		slide.append(1, "Level 1");
-		slide.append(2, "Level 2");
-		slide.append(1, "Nogmaals level 1");
-		slide.append(1, "Level 1 heeft stijl nummer 1");
-		slide.append(2, "Level 2 heeft stijl nummer 2");
-		slide.append(3, "Zo ziet level 3 er uit");
-		slide.append(4, "En dit is level 4");
-		presentation.append(slide);
+        slide = new Slide();
+        slide.setTitle("De derde slide");
+        slide.createSlideItem(1, "Om een nieuwe presentatie te openen,", textItemCreator);
+        slide.createSlideItem(2, "gebruik File->Open uit het menu.", textItemCreator);
+        slide.createSlideItem(1, " ", textItemCreator);
+        slide.createSlideItem(1, "Dit is het einde van de presentatie.", textItemCreator);
+        slide.createSlideItem(1, "Presentation.JabberPoint.jpg", bitmapItemCreator);
+        presentation.append(slide);
+    }
 
-		slide = new Slide();
-		slide.setTitle("De derde slide");
-		slide.append(1, "Om een nieuwe presentatie te openen,");
-		slide.append(2, "gebruik File->Open uit het menu.");
-		slide.append(1, " ");
-		slide.append(1, "Dit is het einde van de presentatie.");
-		slide.append(new BitmapItem(1, "Presentation.JabberPoint.jpg"));
-		presentation.append(slide);
-	}
-
-	public void saveFile(Presentation presentation, String unusedFilename) {
-		throw new IllegalStateException("Save As->Demo! aangeroepen");
-	}
+    public void saveFile(Presentation presentation, String unusedFilename) 
+    {
+        throw new IllegalStateException("Save As->Demo! aangeroepen");
+    }
 }
