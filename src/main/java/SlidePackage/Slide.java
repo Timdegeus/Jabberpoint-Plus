@@ -82,6 +82,7 @@ public class Slide {
         return Math.min(((float)area.width) / ((float)WIDTH), ((float)area.height) / ((float)HEIGHT));
     }
 
+    // maakt een SlideItem doormiddel van een ItemCreator, voegt het SlideItem vervolgens toe aan de slide
     public void createSlideItem(int level, String string, ItemCreator itemCreator)
     {
         SlideItem slideItem = itemCreator.createSlideItem(level, string);
