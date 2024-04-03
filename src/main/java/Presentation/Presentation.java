@@ -19,7 +19,8 @@ import SlideViewer.SlideViewerComponent;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-public class Presentation {
+public class Presentation
+{
 	private String showTitle; // de titel van de presentatie
 	private ArrayList<Slide> showList = null; // een ArrayList met de Slides
 	private int currentSlideNumber = 0; // het slidenummer van de huidige Slide.Slide
