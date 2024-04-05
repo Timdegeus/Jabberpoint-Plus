@@ -21,7 +21,7 @@ public abstract class SlideItem
 
 	public SlideItem(int lev)
 	{
-		level = lev;
+		this.level = lev;
 	}
 
 	public SlideItem()
@@ -32,14 +32,12 @@ public abstract class SlideItem
 // Geef het level
 	public int getLevel()
 	{
-		return level;
+		return this.level;
 	}
 
 // Geef de bounding box
-	public abstract Rectangle getBoundingBox(Graphics g, 
-			ImageObserver observer, float scale, Style style);
+	public abstract Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style style);
 
 // teken het item
-	public abstract void draw(int x, int y, float scale, 
-			Graphics g, Style style, ImageObserver observer);
+	public abstract void draw(int x, int y, float scale, Graphics g, Style style, ImageObserver observer);
 }

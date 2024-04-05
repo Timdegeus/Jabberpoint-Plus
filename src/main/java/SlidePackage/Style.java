@@ -29,7 +29,8 @@ public class Style
 
 	public static void createStyles()
 	{
-		styles = new Style[5];    
+		styles = new Style[5];
+
 		// De styles zijn vast ingecodeerd.
 		styles[0] = new Style(0, Color.red,   48, 20);	// style voor item-level 0
 		styles[1] = new Style(20, Color.blue,  40, 10);	// style voor item-level 1
@@ -40,9 +41,11 @@ public class Style
 
 	public static Style getStyle(int level)
 	{
-		if (level >= styles.length) {
+		if (level >= styles.length)
+		{
 			level = styles.length - 1;
 		}
+
 		return styles[level];
 	}
 

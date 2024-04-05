@@ -35,21 +35,23 @@ public class BitmapItem extends SlideItem
 	public BitmapItem(int level, String name)
 	{
 		super(level);
-		imageName = name;
+		this.imageName = name;
+
 		try
 		{
-			bufferedImage = ImageIO.read(new File(imageName));
+			this.bufferedImage = ImageIO.read(new File(this.imageName));
 		}
 		catch (IOException e)
 		{
-			System.err.println(FILE + imageName + NOTFOUND);
+			System.err.println(FILE + this.imageName + NOTFOUND);
+
 			try
 			{
-				bufferedImage = ImageIO.read(new File(PLACEHOLDER_IMAGE));
+				this.bufferedImage = ImageIO.read(new File(PLACEHOLDER_IMAGE));
 			}
 			catch (IOException imageNotFound)
 			{
-				System.err.println(FILE + imageName + NOTFOUND);
+				System.err.println(FILE + this.imageName + NOTFOUND);
 			}
 		}
 	}
@@ -63,16 +65,13 @@ public class BitmapItem extends SlideItem
 // geef de bestandsnaam van de afbeelding
 	public String getName()
 	{
-		return imageName;
+		return this.imageName;
 	}
 
 // geef de bounding box van de afbeelding
 	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle)
 	{
-		return new Rectangle((int) (myStyle.indent * scale), 0,
-				(int) (bufferedImage.getWidth(observer) * scale),
-				((int) (myStyle.leading * scale)) + 
-				(int) (bufferedImage.getHeight(observer) * scale));
+		return new Rectangle((int) (myStyle.indent * scale), 0, (int) (this.bufferedImage.getWidth(observer) * scale), ((int) (myStyle.leading * scale)) + (int) (this.bufferedImage.getHeight(observer) * scale));
 	}
 
 // teken de afbeelding
@@ -80,12 +79,12 @@ public class BitmapItem extends SlideItem
 	{
 		int width = x + (int) (myStyle.indent * scale);
 		int height = y + (int) (myStyle.leading * scale);
-		g.drawImage(bufferedImage, width, height,(int) (bufferedImage.getWidth(observer)*scale),
-                (int) (bufferedImage.getHeight(observer)*scale), observer);
+
+		g.drawImage(this.bufferedImage, width, height,(int) (this.bufferedImage.getWidth(observer)*scale), (int) (this.bufferedImage.getHeight(observer)*scale), observer);
 	}
 
 	public String toString()
 	{
-		return "Slide.BitmapItem[" + getLevel() + "," + imageName + "]";
+		return "Slide.BitmapItem[" + getLevel() + "," + this.imageName + "]";
 	}
 }

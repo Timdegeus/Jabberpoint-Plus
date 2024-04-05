@@ -24,49 +24,49 @@ public class Slide
 
     public Slide() 
     {
-        items = new Vector<SlideItem>();
+        this.items = new Vector<SlideItem>();
     }
 
     // Voeg een Slide.SlideItem toe
     public void append(SlideItem anItem) 
     {
-        items.addElement(anItem);
+        this.items.addElement(anItem);
     }
 
     // geef de titel van de slide
     public String getTitle() 
     {
-        return title;
+        return this.title;
     }
 
     // verander de titel van de slide
     public void setTitle(String newTitle) 
     {
-        title = newTitle;
+        this.title = newTitle;
     }
 
     // Maak een Slide.TextItem van String, en voeg het Slide.TextItem toe
     public void append(int level, String message) 
     {
-        append(new TextItem(level, message));
+        this.append(new TextItem(level, message));
     }
 
     // geef het betreffende Slide.SlideItem
     public SlideItem getSlideItem(int number) 
     {
-        return (SlideItem)items.elementAt(number);
+        return (SlideItem) this.items.elementAt(number);
     }
 
     // geef alle SlideItems in een Vector
     public Vector<SlideItem> getSlideItems() 
     {
-        return items;
+        return this.items;
     }
 
     // geef de afmeting van de Slide.Slide
     public int getSize() 
     {
-        return items.size();
+        return this.items.size();
     }
 
     // teken de slide
@@ -74,16 +74,23 @@ public class Slide
     {
         float scale = getScale(area);
         int y = area.y;
+
         // De titel wordt apart behandeld
         SlideItem slideItem = new TextItem(0, getTitle());
         Style style = Style.getStyle(slideItem.getLevel());
+
         slideItem.draw(area.x, y, scale, g, style, view);
+
         y += slideItem.getBoundingBox(g, view, scale, style).height;
+
         for (int number=0; number<getSize(); number++)
         {
             slideItem = (SlideItem)getSlideItems().elementAt(number);
+
             style = Style.getStyle(slideItem.getLevel());
+
             slideItem.draw(area.x, y, scale, g, style, view);
+
             y += slideItem.getBoundingBox(g, view, scale, style).height;
         }
     }
@@ -98,6 +105,6 @@ public class Slide
     public void createSlideItem(int level, String string, ItemCreator itemCreator)
     {
         SlideItem slideItem = itemCreator.createSlideItem(level, string);
-        append(slideItem);
+        this.append(slideItem);
     }
 }
