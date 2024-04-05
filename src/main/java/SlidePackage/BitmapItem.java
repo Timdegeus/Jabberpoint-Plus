@@ -28,6 +28,7 @@ public class BitmapItem extends SlideItem {
   
   protected static final String FILE = "Bestand ";
   protected static final String NOTFOUND = " niet gevonden";
+  protected static final String PLACEHOLDER_IMAGE = "imageNotFound.png";
 
 // level staat voor het item-level; name voor de naam van het bestand met de afbeelding
 	public BitmapItem(int level, String name)
@@ -40,7 +41,15 @@ public class BitmapItem extends SlideItem {
 		}
 		catch (IOException e)
 		{
-			System.err.println(FILE + imageName + NOTFOUND) ;
+			System.err.println(FILE + imageName + NOTFOUND);
+			try
+			{
+				bufferedImage = ImageIO.read(new File(PLACEHOLDER_IMAGE));
+			}
+			catch (IOException imageNotFound)
+			{
+				System.err.println(FILE + imageName + NOTFOUND);
+			}
 		}
 	}
 
