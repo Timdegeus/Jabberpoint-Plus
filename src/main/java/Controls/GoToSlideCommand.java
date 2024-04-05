@@ -35,9 +35,9 @@ public class GoToSlideCommand implements Command
         else
         {
             String errorMessage = "The provided input is not valid. Please enter a number.\n Provided input: " + pageNumberStr;
+            String title = "Error";
 
-            ErrorBox.show(parent, errorMessage);
-            System.out.println("Provided input is not a number. Input: " + pageNumberStr);
+            ErrorBox.show(parent, errorMessage, title);
         }
     }
 }

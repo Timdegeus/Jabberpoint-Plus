@@ -7,12 +7,12 @@ import java.awt.*;
 
 public class ErrorBox
 {
-	public static void show(Frame parent, String errorMessage)
+	public static void show(Frame parent, String errorMessage, String title)
 	{
 		JOptionPane.showMessageDialog(parent,
 
 				errorMessage,
-				"Error",
+				title,
 
 				JOptionPane.INFORMATION_MESSAGE
 		);

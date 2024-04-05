@@ -2,6 +2,7 @@ package Controls;
 
 import Presentation.Presentation;
 import Presentation.JabberPoint;
+import SlideViewer.SlideViewerComponent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,22 +18,23 @@ class KeyControllerTest
 {
     private Presentation presentation;
     private KeyController keyController;
-    private Component testComponent;
+    private JFrame testComponent;
 
     @BeforeEach
     void setup() throws IOException
     {
-        testComponent = new JFrame();
         presentation = new Presentation();
         keyController = new KeyController(presentation);
+        testComponent = new JFrame();
         JabberPoint.main(new String[0]);
     }
 
     @Test
     void nextSlideTest()
     {
-        KeyEvent keyEvent = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_PAGE_DOWN, KeyEvent.CHAR_UNDEFINED);
+        presentation.setSlideNumber(1);
+        KeyEvent keyEvent = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_PAGE_DOWN, 'a');
         keyController.keyPressed(keyEvent);
-        assertEquals(1, presentation.getSlideNumber());
+        assertEquals(2, presentation.getSlideNumber());
     }
 }
