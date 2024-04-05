@@ -32,11 +32,8 @@ public class JabberPoint
 	/** Het Main Programma */
 	public static void main(String argv[])
 	{
-
 		Style.createStyles();
-
 		Presentation presentation = new Presentation();
-
 		new SlideViewerFrame(JABVERSION, presentation);
 
 		try
@@ -52,7 +49,9 @@ public class JabberPoint
 		}
 		catch (IOException ex)
 		{
-			JOptionPane.showMessageDialog(null, IOERR + ex, JABERR, JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null,
+					IOERR + ex, JABERR,
+					JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }
