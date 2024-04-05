@@ -4,5 +4,6 @@ import Presentation.Presentation;
 
 public interface Command
 {
-    void execute();
+    public abstract String getTitle();
+    public abstract void execute();
 }

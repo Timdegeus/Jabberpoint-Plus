@@ -1,19 +1,11 @@
 package Controls;
 
-import Acces.Accessor;
-import Acces.XMLAccessor;
 import Presentation.Presentation;
 
-import java.awt.MenuBar;
-import java.awt.Frame;
-import java.awt.Menu;
-import java.awt.MenuItem;
-import java.awt.MenuShortcut;
-import java.awt.event.ActionListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.IOException;
-
-import javax.swing.JOptionPane;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /** <p>De controller voor het menu</p>
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
@@ -24,134 +16,83 @@ import javax.swing.JOptionPane;
  * @version 1.5 2010/03/03 Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
-public class MenuController extends MenuBar {
-	
+public class MenuController extends MenuBar
+{
 	private Frame parent; // het frame, alleen gebruikt als ouder voor de Dialogs
-	private Presentation presentation; // Er worden commando's gegeven aan de presentatie
-	
+	private Presentation presentation;
+
 	private static final long serialVersionUID = 227L;
-	
-	protected static final String ABOUT = "About";
+
 	protected static final String FILE = "File";
-	protected static final String EXIT = "Exit";
-	protected static final String GOTO = "Go to";
-	protected static final String HELP = "Help";
-	protected static final String NEW = "New";
-	protected static final String NEXT = "Next";
-	protected static final String OPEN = "Open";
-	protected static final String PAGENR = "Page number?";
-	protected static final String PREV = "Prev";
-	protected static final String SAVE = "Save";
 	protected static final String VIEW = "View";
-	
+	protected static final String HELP = "Help";
+
 	protected static final String TESTFILE = "test.xml";
 	protected static final String SAVEFILE = "dump.xml";
-	
+
 	protected static final String IOEX = "IO Exception: ";
 	protected static final String LOADERR = "Load Error";
 	protected static final String SAVEERR = "Save Error";
 
-	public MenuController(Frame frame, Presentation pres) // Voeg de items toe voor in het menu
+	public MenuController(Frame frame, Presentation presentation)
 	{
-		parent = frame;
-		presentation = pres;
+		this.parent = frame;
+		this.presentation = presentation;
+		this.SetupMenuItems();
+	}
 
+	private void SetupMenuItems()
+	{
+		ArrayList<Command> fileCommands = new ArrayList<Command>();
+		fileCommands.add(new OpenFileCommand(parent, presentation));
+		fileCommands.add(new NewSlideCommand(parent, presentation));
+		fileCommands.add(new SavePresenationCommand(parent, presentation));
+		fileCommands.add(new ExitCommand(presentation));
+
+		ArrayList<Command> viewCommands = new ArrayList<Command>();
+		viewCommands.add(new PreviousSlideCommand(presentation));
+		viewCommands.add(new NextSlideCommand(presentation));
+		viewCommands.add(new GoToSlideCommand(parent, presentation));
+
+		ArrayList<Command> helpCommands = new ArrayList<Command>();
+		helpCommands.add(new OpenAboutCommand(parent));
+
+		add(this.createMenu(FILE, fileCommands, true));
+		add(this.createMenu(VIEW, viewCommands, true));
+		setHelpMenu(this.createMenu(HELP, helpCommands, false));
+	}
+
+	private Menu createMenu(String menuTitle, ArrayList<Command> commands, boolean addSeperator)
+	{
+		Menu menu = new Menu(menuTitle);
 		MenuItem menuItem;
-		Menu fileMenu = new Menu(FILE);
 
-		fileMenu.add(menuItem = mkMenuItem(OPEN)); // Open een presentatie
-
-		menuItem.addActionListener(new ActionListener()
+		for ( int i = 0; i < commands.size(); i++)
 		{
-			public void actionPerformed(ActionEvent actionEvent)
+			Command command = commands.get(i);
+
+			if (i == commands.size() - 1 && addSeperator)
 			{
-				new OpenFileCommand(parent, presentation).execute();
+				menu.addSeparator();
 			}
-		} );
 
-		fileMenu.add(menuItem = mkMenuItem(NEW)); // Maak een nieuwe presentatie aan
+			menu.add(menuItem = this.createMenuItem(command.getTitle()));
 
-		menuItem.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent actionEvent)
+			menuItem.addActionListener(new ActionListener()
 			{
-				new NewSlideCommand(parent, presentation).execute();
-			}
-		});
+				@Override
+				public void actionPerformed(ActionEvent e)
+				{
+					command.execute();
+				}
+			});
+		}
 
-		fileMenu.add(menuItem = mkMenuItem(SAVE)); // Sla een presentatie op
-
-		menuItem.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				new SavePresenationCommand(parent, presentation).execute();
-			}
-		});
-
-		fileMenu.addSeparator();
-
-		fileMenu.add(menuItem = mkMenuItem(EXIT)); // Sluit de software af
-
-		menuItem.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent actionEvent)
-			{
-				new ExitCommand(presentation).execute();
-			}
-		});
-
-		add(fileMenu);
-		Menu viewMenu = new Menu(VIEW);
-
-		viewMenu.add(menuItem = mkMenuItem(NEXT)); // Ga naar de volgende slide
-
-		menuItem.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent actionEvent)
-			{
-				new NextSlideCommand(presentation).execute();
-			}
-		});
-
-		viewMenu.add(menuItem = mkMenuItem(PREV)); // ga naar de vorige slide
-
-		menuItem.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent actionEvent)
-			{
-				new PreviousSlideCommand(presentation).execute();
-			}
-		});
-
-		viewMenu.add(menuItem = mkMenuItem(GOTO)); // Ga naar de ingevoerde slide
-
-		menuItem.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent actionEvent)
-			{
-				new GoToSlideCommand(parent, presentation).execute();
-			}
-		});
-
-		add(viewMenu);
-		Menu helpMenu = new Menu(HELP);
-
-		helpMenu.add(menuItem = mkMenuItem(ABOUT)); // Open de about pagina
-
-		menuItem.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent actionEvent)
-			{
-				new OpenAboutCommand(parent).execute();
-			}
-		});
-
-		setHelpMenu(helpMenu);		// nodig for portability (Motif, etc.).
+		return menu;
 	}
 
 	// een menu-item aanmaken
-	public MenuItem mkMenuItem(String name)
+	public MenuItem createMenuItem(String name)
 	{
 		return new MenuItem(name, new MenuShortcut(name.charAt(0)));
 	}

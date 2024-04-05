@@ -7,12 +7,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.regex.Pattern;
 
-import static Controls.MenuController.PAGENR;
-
 public class GoToSlideCommand implements Command
 {
     private final Frame parent;
     private final Presentation presentation;
+    private static final String TITLE = "Go to";
+    protected static final String PAGENR = "Page number?";
 
     public GoToSlideCommand(Frame parent, Presentation presentation)
     {
@@ -21,9 +21,15 @@ public class GoToSlideCommand implements Command
     }
 
     @Override
+    public String getTitle()
+    {
+        return TITLE;
+    }
+
+    @Override
     public void execute()
     {
-        String pageNumberStr = JOptionPane.showInputDialog((Object)PAGENR);
+        String pageNumberStr = JOptionPane.showInputDialog((Object) PAGENR);
 
         int pageNumber;
 

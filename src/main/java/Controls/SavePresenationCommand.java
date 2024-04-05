@@ -14,11 +14,18 @@ public class SavePresenationCommand implements Command
 {
     private final Frame parent;
     private final Presentation presentation;
+    private static final String TITLE = "Save";
 
     public SavePresenationCommand(Frame parent, Presentation presentation)
     {
         this.parent = parent;
         this.presentation = presentation;
+    }
+
+    @Override
+    public String getTitle()
+    {
+        return TITLE;
     }
 
     @Override

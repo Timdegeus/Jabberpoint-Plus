@@ -8,11 +8,18 @@ public class NewSlideCommand implements Command
 {
     private final Frame parent;
     private final Presentation presentation;
+    private static final String TITLE = "New slide";
 
     public NewSlideCommand(Frame parent, Presentation presentation)
     {
         this.parent = parent;
         this.presentation = presentation;
+    }
+
+    @Override
+    public String getTitle()
+    {
+        return TITLE;
     }
 
     @Override
