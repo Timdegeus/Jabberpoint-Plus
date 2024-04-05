@@ -5,7 +5,9 @@ import Acces.XMLAccessor;
 import Presentation.Presentation;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 
 import static Controls.MenuController.*;
@@ -32,10 +34,12 @@ public class OpenFileCommand implements Command
     {
         presentation.clear();
         Accessor xmlAccessor = new XMLAccessor();
+        JFileChooser fileChooser = createjFileChooser();
+        fileChooser.showOpenDialog(parent);
 
         try
         {
-            xmlAccessor.loadFile(presentation, TESTFILE);
+            xmlAccessor.loadFile(presentation, fileChooser.getSelectedFile().getPath());
             presentation.setSlideNumber(0);
         }
         catch (IOException exc)
@@ -44,5 +48,30 @@ public class OpenFileCommand implements Command
         }
 
         parent.repaint();
+    }
+
+    //creates a JFileChooser which only shows xml files
+    private static JFileChooser createjFileChooser() {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(new FileFilter()
+        {
+            public String getDescription() {
+                return "XML files (*.xml)";
+            }
+
+            public boolean accept(File f)
+            {
+                if (f.isDirectory())
+                {
+                    return true;
+                } else
+                {
+                    String filename = f.getName().toLowerCase();
+                    return filename.endsWith(".xml");
+                }
+            }
+        }
+        );
+        return fileChooser;
     }
 }
