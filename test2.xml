@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE presentation SYSTEM "jabberpoint.dtd">
+<presentation>
+    <showtitle>XML-Based Presentation.Presentation for Jabberpoint</showtitle>
+    <slide>
+        <title>Presentation.JabberPoint XML-Demo</title>
+        <item kind="text"  level="1">Dit is een test presentatie</item>
+        <item kind="text"  level="2">Deze is gemaakt om het file selecteren te testen</item>
+        <item kind="text"  level="2">Ook is er een katten foto om hem een beetje mooi te maken</item>
+        <item kind="image"  level="2">test.gif</item>
+    </slide>
+</presentation>
