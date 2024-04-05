@@ -23,18 +23,17 @@ class KeyControllerTest
     @BeforeEach
     void setup() throws IOException
     {
-        presentation = new Presentation();
-        keyController = new KeyController(presentation);
-        testComponent = new JFrame();
+        this.testComponent = new JFrame();
         JabberPoint.main(new String[0]);
+        this.presentation = new Presentation();
+        this.keyController = new KeyController(presentation);
     }
 
     @Test
-    void nextSlideTest()
+    void nextSlideCommandTest()
     {
-        presentation.setSlideNumber(1);
-        KeyEvent keyEvent = new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_PAGE_DOWN, 'a');
-        keyController.keyPressed(keyEvent);
-        assertEquals(2, presentation.getSlideNumber());
+        assertEquals(0, this.presentation.getSlideNumber());
+        this.keyController.keyPressed(new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_PAGE_DOWN, 'a'));
+        assertEquals(1, this.presentation.getSlideNumber());
     }
 }
