@@ -47,17 +47,12 @@ public class Presentation
 
 	public String getTitle()
 	{
-		return this.showTitle;
+		return showTitle;
 	}
 
 	public void setTitle(String nt)
 	{
 		showTitle = nt;
-	}
-
-	public ArrayList<Slide> getShowList()
-	{
-		return this.showList;
 	}
 
 	public void setShowView(SlideViewerComponent slideViewerComponent)
@@ -71,10 +66,33 @@ public class Presentation
 		return currentSlideNumber;
 	}
 
+	// verander het huidige-slide-nummer en laat het aan het window weten.
 	public void setSlideNumber(int number)
 	{
-		this.currentSlideNumber = number;
-		this.updatePresentationListeners();
+		currentSlideNumber = number;
+
+		if (slideViewComponent != null)
+		{
+			slideViewComponent.update(this, getCurrentSlide());
+		}
+	}
+
+	// ga naar de vorige slide tenzij je aan het begin van de presentatie bent
+	public void prevSlide()
+	{
+		if (currentSlideNumber > BEGIN_SLIDE)
+		{
+			setSlideNumber(currentSlideNumber - 1);
+	    }
+	}
+
+	// Ga naar de volgende slide tenzij je aan het einde van de presentatie bent.
+	public void nextSlide()
+	{
+		if (currentSlideNumber < (showList.size()-1))
+		{
+			setSlideNumber(currentSlideNumber + 1);
+		}
 	}
 
 	// Verwijder de presentatie, om klaar te zijn voor de volgende
