@@ -65,14 +65,7 @@ public class BitmapItem extends SlideItem
 // geef de bestandsnaam van de afbeelding
 	public String getName()
 	{
-		if (this.imageName != null)
-		{
-			return this.imageName;
-		}
-		else
-		{
-			return "error";
-		}
+		return this.imageName;
 	}
 
 // geef de bounding box van de afbeelding
