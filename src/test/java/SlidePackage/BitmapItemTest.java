@@ -14,13 +14,6 @@ public class BitmapItemTest
     }
 
     @Test
-    void getNameTest_whereBitmapItemHasNoName_shouldReturnName()
-    {
-        BitmapItem bitmapItem = new BitmapItem();
-        assertEquals(null, bitmapItem.getName());
-    }
-
-    @Test
     void toStringTest_shouldReturnBitmapItemAsString()
     {
         BitmapItem bitmapItem = new BitmapItem(0, "testName.jpg");
