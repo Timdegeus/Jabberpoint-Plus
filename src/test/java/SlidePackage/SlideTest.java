@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SlideTest
+public class SlideTest
 {
     private ItemCreator textItemCreator;
     private ItemCreator bitmapItemCreator;
     private Slide slide;
 
     @BeforeEach
-    public void setup()
+    void setup()
     {
         this.textItemCreator = new TextItemCreator();
         this.bitmapItemCreator = new BitmapItemCreator();
