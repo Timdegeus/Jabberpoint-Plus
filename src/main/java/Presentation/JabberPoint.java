@@ -1,10 +1,15 @@
-package org.example;
+package Presentation;
+
+import Acces.Accessor;
+import Acces.XMLAccessor;
+import SlidePackage.Style;
+import SlideViewer.SlideViewerFrame;
 
 import javax.swing.JOptionPane;
 
 import java.io.IOException;
 
-/** JabberPoint Main Programma
+/** Presentation.JabberPoint Main Programma
  * <p>This program is distributed under the terms of the accompanying
  * COPYRIGHT.txt file (which is NOT the GNU General Public License).
  * Please read it. Your use of the software constitutes acceptance
@@ -18,25 +23,32 @@ import java.io.IOException;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-public class JabberPoint {
+public class JabberPoint
+{
 	protected static final String IOERR = "IO Error: ";
 	protected static final String JABERR = "Jabberpoint Error ";
 	protected static final String JABVERSION = "Jabberpoint 1.6 - OU version";
 
 	/** Het Main Programma */
-	public static void main(String argv[]) {
-		
+	public static void main(String argv[])
+	{
 		Style.createStyles();
 		Presentation presentation = new Presentation();
 		new SlideViewerFrame(JABVERSION, presentation);
-		try {
+
+		try
+		{
 			if (argv.length == 0) { // een demo presentatie
 				Accessor.getDemoAccessor().loadFile(presentation, "");
-			} else {
+			}
+			else
+			{
 				new XMLAccessor().loadFile(presentation, argv[0]);
 			}
 			presentation.setSlideNumber(0);
-		} catch (IOException ex) {
+		}
+		catch (IOException ex)
+		{
 			JOptionPane.showMessageDialog(null,
 					IOERR + ex, JABERR,
 					JOptionPane.ERROR_MESSAGE);
