@@ -11,16 +11,16 @@ Er is gebruik gemaakt van een OTAP straat om de kwaliteit van de applicatie so h
 JabberPoint is een presentatie programma geschreven in de programmeer taal Java.
 # Design patterns
 ### Command pattern
-
+Voor de command pattern is voor elke command een nieuwe klasse gemaakt, boven al deze klasse staat vervolgens een interface die gebruikt wordt in de presentation om de commands uit te voeren.
 ### Factory method
-
+Bij de factory method is er een nieuwe abstracte klasse aangemaakt namelijk de SlideItemFactory deze extend vervolgens naar BitmapItemFactory en TextItemFactory waar in een nieuwe BitmapItem of TextItem wordt aangemaakt. De SlideItemFactory krijgt een level en informatie mee als hij gebruikt wordt waarbij de informatie afhankelijk is van de gemaakte SlideItem, bij een TextItem is het de text en bij een BitmapItem is het de filepath. De Factories kunnen vervolgens gebruikt worden in andere klasses om de SlideItems aan te maken.
 ### Decorator pattern
-
+De decorator pattern is nog niet geimplementeerd in JabberPoint
 # Principles
-### Single-Resposibility Principle
-
+### Single-Responsibility Principle
+Het single-responsibility principle is toegepast door de factory method. Door BitmapItemCreater en TextItemCreator in aparte klasses te doen wordt er voor gezorgd dat de klasses maar 1 taak hebben.  
 ### Open-Closed Principle
-
+Het open-closed principle is toegepast door de command pattern. Het is nu makkelijk om nieuwe commando's toe te voegen en je hoeft niet meer de hele broncode aan te passen van MenuController en KeyController.
 ### Liskov Substitution Principle
+Het liskov substitution principle is toegepast door de command pattern door op de juiste manier gebruik te maken van een interface. 
 
-### Dependency Inversion Principle
