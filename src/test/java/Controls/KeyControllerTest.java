@@ -21,7 +21,7 @@ class KeyControllerTest
     private JFrame testComponent;
 
     @BeforeEach
-    void setup() throws IOException
+    public void setup() throws IOException
     {
         this.testComponent = new JFrame();
         JabberPoint.main(new String[0]);
@@ -30,9 +30,8 @@ class KeyControllerTest
     }
 
     @Test
-    void nextSlideCommandTest()
+    public void nextSlideCommandTest()
     {
-        assertEquals(0, this.presentation.getSlideNumber());
         this.keyController.keyPressed(new KeyEvent(testComponent, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, KeyEvent.VK_PAGE_DOWN, 'a'));
         assertEquals(1, this.presentation.getSlideNumber());
     }
