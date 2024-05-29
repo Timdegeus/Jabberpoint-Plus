@@ -65,7 +65,7 @@ public class TextItem extends SlideItem
 	{
 		List<TextLayout> layouts = getLayouts(g, myStyle, scale);
 
-		int xsize = 0, ysize = (int) (myStyle.leading * scale);
+		int xsize = 0, ysize = (int) (myStyle.getLeading() * scale);
 
 		Iterator<TextLayout> iterator = layouts.iterator();
 
@@ -86,7 +86,7 @@ public class TextItem extends SlideItem
 			ysize += layout.getLeading() + layout.getDescent();
 		}
 
-		return new Rectangle((int) (myStyle.indent*scale), 0, xsize, ysize );
+		return new Rectangle((int) (myStyle.getIndent() * scale), 0, xsize, ysize );
 	}
 
 // teken het item
@@ -98,10 +98,10 @@ public class TextItem extends SlideItem
 		}
 
 		List<TextLayout> layouts = getLayouts(g, myStyle, scale);
-		Point pen = new Point(x + (int)(myStyle.indent * scale), y + (int) (myStyle.leading * scale));
+		Point pen = new Point(x + (int)(myStyle.getIndent() * scale), y + (int) (myStyle.getIndent() * scale));
 
 		Graphics2D g2d = (Graphics2D)g;
-		g2d.setColor(myStyle.color);
+		g2d.setColor(myStyle.getColor());
 
 		Iterator<TextLayout> it = layouts.iterator();
 
@@ -127,7 +127,7 @@ public class TextItem extends SlideItem
 
     	LineBreakMeasurer measurer = new LineBreakMeasurer(attrStr.getIterator(), frc);
 
-    	float wrappingWidth = (Slide.WIDTH - s.indent) * scale;
+    	float wrappingWidth = (Slide.getWidth() - s.getIndent()) * scale;
 
     	while (measurer.getPosition() < getText().length())
 		{

@@ -17,8 +17,8 @@ import java.util.Vector;
 
 public class Slide 
 {
-    public final static int WIDTH = 1200;
-    public final static int HEIGHT = 800;
+    private final static int WIDTH = 1200;
+    private final static int HEIGHT = 800;
     protected String title; // de titel wordt apart bewaard
     protected Vector<SlideItem> items; // de slide-items worden in een Vector bewaard
 
@@ -67,6 +67,16 @@ public class Slide
     public int getSize() 
     {
         return this.items.size();
+    }
+
+    public static int getWidth()
+    {
+        return WIDTH;
+    }
+
+    public static int getHeight()
+    {
+        return HEIGHT;
     }
 
     // teken de slide

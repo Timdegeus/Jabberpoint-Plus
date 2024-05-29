@@ -25,7 +25,7 @@ public class NewSlideCommand implements Command
     @Override
     public void execute()
     {
-        presentation.clear();
-        parent.repaint();
+        this.presentation.clear();
+        this.parent.repaint();
     }
 }

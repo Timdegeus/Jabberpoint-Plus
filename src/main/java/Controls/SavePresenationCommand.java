@@ -35,12 +35,11 @@ public class SavePresenationCommand implements Command
 
         try
         {
-            xmlAccessor.saveFile(presentation, SAVEFILE);
+            xmlAccessor.saveFile(this.presentation, SAVEFILE);
         }
         catch (IOException exc)
         {
-            JOptionPane.showMessageDialog(parent, IOEX + exc,
-                    SAVEERR, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this.parent, IOEX + exc, SAVEERR, JOptionPane.ERROR_MESSAGE);
         }
     }
 }

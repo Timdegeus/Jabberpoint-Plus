@@ -67,7 +67,7 @@ public class MenuController extends MenuBar
 		Menu menu = new Menu(menuTitle);
 		MenuItem menuItem;
 
-		for ( int i = 0; i < commands.size(); i++)
+		for (int i = 0; i < commands.size(); i++)
 		{
 			Command command = commands.get(i);
 

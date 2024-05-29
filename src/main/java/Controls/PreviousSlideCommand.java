@@ -21,6 +21,6 @@ public class PreviousSlideCommand implements Command
     @Override
     public void execute()
     {
-        presentation.prevSlide();
+        this.presentation.prevSlide();
     }
 }

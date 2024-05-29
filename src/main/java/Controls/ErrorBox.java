@@ -9,12 +9,6 @@ public class ErrorBox
 {
 	public static void show(Frame parent, String errorMessage, String title)
 	{
-		JOptionPane.showMessageDialog(parent,
-
-				errorMessage,
-				title,
-
-				JOptionPane.INFORMATION_MESSAGE
-		);
+		JOptionPane.showMessageDialog(parent, errorMessage, title, JOptionPane.INFORMATION_MESSAGE);
 	}
 }
