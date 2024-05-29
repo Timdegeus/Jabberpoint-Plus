@@ -44,18 +44,18 @@ public class MenuController extends MenuBar
 	private void SetupMenuItems()
 	{
 		ArrayList<Command> fileCommands = new ArrayList<Command>();
-		fileCommands.add(new OpenFileCommand(parent, presentation));
-		fileCommands.add(new NewSlideCommand(parent, presentation));
-		fileCommands.add(new SavePresenationCommand(parent, presentation));
-		fileCommands.add(new ExitCommand(presentation));
+		fileCommands.add(new OpenFileCommand(this.parent, this.presentation));
+		fileCommands.add(new NewSlideCommand(this.parent, this.presentation));
+		fileCommands.add(new SavePresenationCommand(this.parent, this.presentation));
+		fileCommands.add(new ExitCommand(this.presentation));
 
 		ArrayList<Command> viewCommands = new ArrayList<Command>();
-		viewCommands.add(new PreviousSlideCommand(presentation));
-		viewCommands.add(new NextSlideCommand(presentation));
-		viewCommands.add(new GoToSlideCommand(parent, presentation));
+		viewCommands.add(new PreviousSlideCommand(this.presentation));
+		viewCommands.add(new NextSlideCommand(this.presentation));
+		viewCommands.add(new GoToSlideCommand(this.parent, this.presentation));
 
 		ArrayList<Command> helpCommands = new ArrayList<Command>();
-		helpCommands.add(new OpenAboutCommand(parent));
+		helpCommands.add(new OpenAboutCommand(this.parent));
 
 		add(this.createMenu(FILE, fileCommands, true));
 		add(this.createMenu(VIEW, viewCommands, true));

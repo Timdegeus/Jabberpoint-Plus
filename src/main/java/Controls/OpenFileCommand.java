@@ -36,7 +36,7 @@ public class OpenFileCommand implements Command
         this.presentation.clear();
         Accessor xmlAccessor = new XMLAccessor();
         JFileChooser fileChooser = createjFileChooser();
-        fileChooser.showOpenDialog(parent);
+        fileChooser.showOpenDialog(this.parent);
 
         try
         {

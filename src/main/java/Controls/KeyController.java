@@ -21,7 +21,7 @@ public class KeyController extends KeyAdapter
 
 	public KeyController(Presentation p)
 	{
-		presentation = p;
+		this.presentation = p;
 	}
 
 	public void keyPressed(KeyEvent keyEvent)
@@ -32,18 +32,18 @@ public class KeyController extends KeyAdapter
 			case KeyEvent.VK_DOWN:
 			case KeyEvent.VK_ENTER:
 			case '+':
-				new NextSlideCommand(presentation).execute();
+				new NextSlideCommand(this.presentation).execute();
 				break;
 
 			case KeyEvent.VK_PAGE_UP:
 			case KeyEvent.VK_UP:
 			case '-':
-				new PreviousSlideCommand(presentation).execute();
+				new PreviousSlideCommand(this.presentation).execute();
 				break;
 
 			case 'q':
 			case 'Q':
-				new ExitCommand(presentation).execute();
+				new ExitCommand(this.presentation).execute();
 				break; // wordt nooit bereikt als het goed is
 
 			default:
