@@ -36,14 +36,27 @@ public class GoToSlideCommand implements Command
         if(!Pattern.matches("[a-zA-Z]+", pageNumberStr) && !pageNumberStr.isEmpty())
         {
             pageNumber = Integer.parseInt(pageNumberStr);
-            presentation.setSlideNumber(pageNumber - 1);
+            if (pageNumber <= this.presentation.getSize())
+            {
+                this.presentation.setSlideNumber(pageNumber - 1);
+            }
+            else
+            {
+                String errorMessage = "The provided slide number is greater than the number of slides. " +
+                        "Please enter a number of a slide that exists.\n Provided input: " + pageNumber +
+                        ", actual number of slides:" + this.presentation.getSize() ;
+                String title = "Error";
+
+                ErrorBox.show(this.parent, errorMessage, title);
+            }
         }
         else
         {
-            String errorMessage = "The provided input is not valid. Please enter a number.\n Provided input: " + pageNumberStr;
+            String errorMessage = "The provided input is not valid. Please enter a number.\n Provided input: "
+                    + pageNumberStr;
             String title = "Error";
 
-            ErrorBox.show(parent, errorMessage, title);
+            ErrorBox.show(this.parent, errorMessage, title);
         }
     }
 }
