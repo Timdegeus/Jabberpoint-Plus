@@ -79,7 +79,7 @@ public class SlideViewerComponent extends JComponent
 			return;
 		}
 
-		g.setFont(labelFont);
+		g.setFont(this.labelFont);
 		g.setColor(COLOR);
 
 		g.drawString("Slide " + (1 + this.presentation.getSlideNumber()) + " of " + this.presentation.getSize(), XPOS, YPOS);

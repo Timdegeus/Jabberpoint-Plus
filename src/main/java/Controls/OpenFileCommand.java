@@ -52,11 +52,13 @@ public class OpenFileCommand implements Command
     }
 
     //creates a JFileChooser which only shows xml files
-    private static JFileChooser createjFileChooser() {
+    private static JFileChooser createjFileChooser()
+    {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileFilter(new FileFilter()
         {
-            public String getDescription() {
+            public String getDescription()
+            {
                 return "XML files (*.xml)";
             }
 
@@ -69,11 +71,13 @@ public class OpenFileCommand implements Command
                 else
                 {
                     String filename = f.getName().toLowerCase();
+
                     return filename.endsWith(".xml");
                 }
             }
         }
         );
+
         return fileChooser;
     }
 }

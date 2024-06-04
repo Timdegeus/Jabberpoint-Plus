@@ -23,36 +23,36 @@ class DemoPresentation extends Accessor
         Slide slide;
         slide = new Slide();
         slide.setTitle("Presentation.JabberPoint");
-        slide.createSlideItem(1, "Het Java Presentatie Tool", textItemCreator);
-        slide.createSlideItem(2, "Copyright (c) 1996-2000: Ian Darwin", textItemCreator);
-        slide.createSlideItem(2, "Copyright (c) 2000-now:", textItemCreator);
-        slide.createSlideItem(2, "Gert Florijn en Sylvia Stuurman", textItemCreator);
-        slide.createSlideItem(4, "Presentation.JabberPoint aanroepen zonder bestandsnaam", textItemCreator);
-        slide.createSlideItem(4, "laat deze presentatie zien", textItemCreator);
-        slide.createSlideItem(1, "Navigeren:", textItemCreator);
-        slide.createSlideItem(3, "Volgende slide: PgDn of Enter", textItemCreator);
-        slide.createSlideItem(3, "Vorige slide: PgUp of up-arrow", textItemCreator);
-        slide.createSlideItem(3, "Stoppen: q or Q", textItemCreator);
+        slide.createSlideItem(1, "Het Java Presentatie Tool", this.textItemCreator);
+        slide.createSlideItem(2, "Copyright (c) 1996-2000: Ian Darwin", this.textItemCreator);
+        slide.createSlideItem(2, "Copyright (c) 2000-now:", this.textItemCreator);
+        slide.createSlideItem(2, "Gert Florijn en Sylvia Stuurman", this.textItemCreator);
+        slide.createSlideItem(4, "Presentation.JabberPoint aanroepen zonder bestandsnaam", this.textItemCreator);
+        slide.createSlideItem(4, "laat deze presentatie zien", this.textItemCreator);
+        slide.createSlideItem(1, "Navigeren:", this.textItemCreator);
+        slide.createSlideItem(3, "Volgende slide: PgDn of Enter", this.textItemCreator);
+        slide.createSlideItem(3, "Vorige slide: PgUp of up-arrow", this.textItemCreator);
+        slide.createSlideItem(3, "Stoppen: q or Q", this.textItemCreator);
         presentation.append(slide);
 
         slide = new Slide();
         slide.setTitle("Demonstratie van levels en stijlen");
-        slide.createSlideItem(1, "Level 1", textItemCreator);
-        slide.createSlideItem(2, "Level 2", textItemCreator);
-        slide.createSlideItem(1, "Nogmaals level 1", textItemCreator);
-        slide.createSlideItem(1, "Level 1 heeft stijl nummer 1", textItemCreator);
-        slide.createSlideItem(2, "Level 2 heeft stijl nummer 2", textItemCreator);
-        slide.createSlideItem(3, "Zo ziet level 3 er uit", textItemCreator);
-        slide.createSlideItem(4, "En dit is level 4", textItemCreator);
+        slide.createSlideItem(1, "Level 1", this.textItemCreator);
+        slide.createSlideItem(2, "Level 2", this.textItemCreator);
+        slide.createSlideItem(1, "Nogmaals level 1", this.textItemCreator);
+        slide.createSlideItem(1, "Level 1 heeft stijl nummer 1", this.textItemCreator);
+        slide.createSlideItem(2, "Level 2 heeft stijl nummer 2", this.textItemCreator);
+        slide.createSlideItem(3, "Zo ziet level 3 er uit", this.textItemCreator);
+        slide.createSlideItem(4, "En dit is level 4", this.textItemCreator);
         presentation.append(slide);
 
         slide = new Slide();
         slide.setTitle("De derde slide");
-        slide.createSlideItem(1, "Om een nieuwe presentatie te openen,", textItemCreator);
-        slide.createSlideItem(2, "gebruik File->Open uit het menu.", textItemCreator);
-        slide.createSlideItem(1, " ", textItemCreator);
-        slide.createSlideItem(1, "Dit is het einde van de presentatie.", textItemCreator);
-        slide.createSlideItem(1, "Presentation.JabberPoint.jpg", bitmapItemCreator);
+        slide.createSlideItem(1, "Om een nieuwe presentatie te openen,", this.textItemCreator);
+        slide.createSlideItem(2, "gebruik File->Open uit het menu.", this.textItemCreator);
+        slide.createSlideItem(1, " ", this.textItemCreator);
+        slide.createSlideItem(1, "Dit is het einde van de presentatie.", this.textItemCreator);
+        slide.createSlideItem(1, "Presentation.JabberPoint.jpg", this.bitmapItemCreator);
         presentation.append(slide);
     }
 
