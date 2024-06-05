@@ -44,7 +44,8 @@ public class GoToSlideCommand implements Command
             }
             else
             {
-                String errorMessage = "The provided input is not valid. Please enter a number between 1 and " + presentationSize+  ".\n Provided input: " + pageNumberStr;
+                String errorMessage = "The provided input is not valid. Please enter a number between 1 and " +
+                        presentationSize+  ".\n Provided input: " + pageNumberStr;
                 String title = "Error";
 
                 ErrorBox.show(this.parent, errorMessage, title);

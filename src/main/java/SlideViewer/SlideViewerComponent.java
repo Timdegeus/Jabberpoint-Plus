@@ -24,7 +24,7 @@ import SlidePackage.Slide;
 
 public class SlideViewerComponent extends JComponent
 {
-		
+
 	private Slide slide; // de huidige slide
 	private Font labelFont = null; // het font voor labels
 	private Presentation presentation = null; // de presentatie
@@ -86,5 +86,22 @@ public class SlideViewerComponent extends JComponent
 
 		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 		this.slide.draw(g, area, this);
+	}
+
+	// Getters for testing
+	public Presentation getPresentation() {
+		return presentation;
+	}
+
+	public Slide getSlide() {
+		return slide;
+	}
+
+	public Font getLabelFont() {
+		return labelFont;
+	}
+
+	public JFrame getFrame() {
+		return frame;
 	}
 }
