@@ -39,7 +39,9 @@ public class SavePresenationCommand implements Command
         }
         catch (IOException exc)
         {
-            JOptionPane.showMessageDialog(this.parent, IOEX + exc, SAVEERR, JOptionPane.ERROR_MESSAGE);
+            String errorMessage = IOEX + exc;
+
+            ErrorBox.show(this.parent, errorMessage, SAVEERR);
         }
     }
 }
