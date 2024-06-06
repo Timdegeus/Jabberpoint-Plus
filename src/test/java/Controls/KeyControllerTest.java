@@ -25,18 +25,18 @@ class KeyControllerTest
     @BeforeEach
     public void setup() throws IOException
     {
+        JabberPoint.main(new String[0]);
         this.presentation = new Presentation();
         this.keyController = new KeyController(presentation);
         this.component = new JFrame();
-        JabberPoint.main(new String[0]);
+        this.presentation.append(new Slide());
+        this.presentation.append(new Slide());
     }
 
     @ParameterizedTest
     @ValueSource(ints = {KeyEvent.VK_PAGE_DOWN, KeyEvent.VK_DOWN, KeyEvent.VK_ENTER, '+'})
-    void keyController_nextPage(int keyCode)
+    void keyController_nextPage_shouldPass(int keyCode)
     {
-        this.presentation.append(new Slide());
-        this.presentation.append(new Slide());
         assertEquals(0, this.presentation.getSlideNumber());
         this.keyController.keyPressed(new KeyEvent(this.component, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, keyCode, 'a'));
         assertEquals(1, this.presentation.getSlideNumber());
@@ -44,10 +44,8 @@ class KeyControllerTest
 
     @ParameterizedTest
     @ValueSource(ints = {KeyEvent.VK_PAGE_UP, KeyEvent.VK_UP, '-'})
-    void keyController_previousPage(int keyCode)
+    void keyController_previousPage_shouldPass(int keyCode)
     {
-        this.presentation.append(new Slide());
-        this.presentation.append(new Slide());
         this.presentation.setSlideNumber(2);
         assertEquals(2, this.presentation.getSlideNumber());
         this.keyController.keyPressed(new KeyEvent(this.component, KeyEvent.KEY_PRESSED, System.currentTimeMillis(), 0, keyCode, 'a'));
