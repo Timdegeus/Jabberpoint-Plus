@@ -1,7 +1,7 @@
 package Controls.Commands;
 
+import Controls.SavePresenationCommand;
 import Presentation.JabberPoint;
-import Controls.Command;
 import Controls.NextSlideCommand;
 import Controls.PreviousSlideCommand;
 import Presentation.Presentation;
@@ -13,13 +13,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CommandTests
 {
     private Presentation presentation;
+    private Frame frame;
     private NextSlideCommand nextSlideCommand;
     private PreviousSlideCommand previousSlideCommand;
+    private SavePresenationCommand savePresenationCommand;
     private Component component;
 
     @BeforeEach
@@ -27,8 +30,10 @@ public class CommandTests
     {
         JabberPoint.main(new String[0]);
         this.presentation = new Presentation();
-        this.nextSlideCommand = new NextSlideCommand(presentation);
-        this.previousSlideCommand = new PreviousSlideCommand(presentation);
+        this.frame = new Frame();
+        this.nextSlideCommand = new NextSlideCommand(this.presentation);
+        this.previousSlideCommand = new PreviousSlideCommand(this.presentation);
+        this.savePresenationCommand = new SavePresenationCommand(this.frame, this.presentation);
         this.component = new JFrame();
         this.presentation.append(new Slide());
         this.presentation.append(new Slide());
@@ -51,5 +56,9 @@ public class CommandTests
         assertEquals(1, this.presentation.getSlideNumber());
     }
 
-
+    @Test
+    public void savePresentation_shouldPass()
+    {
+        assertDoesNotThrow(() -> this.savePresenationCommand.execute());
+    }
 }

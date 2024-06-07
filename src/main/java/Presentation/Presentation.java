@@ -99,7 +99,6 @@ public class Presentation
 	public void clear()
 	{
 		this.showList = new ArrayList<Slide>();
-//		this.setSlideNumber(-1);
 	}
 
 	// Voeg een slide toe aan de presentatie
