@@ -50,4 +50,6 @@ public class CommandTests
         this.previousSlideCommand.execute();
         assertEquals(1, this.presentation.getSlideNumber());
     }
+
+
 }

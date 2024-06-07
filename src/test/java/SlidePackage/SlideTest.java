@@ -37,4 +37,11 @@ public class SlideTest
         assertEquals(bitmapItem.toString(), this.slide.getSlideItem(0).toString());
 
     }
+
+    @Test
+    public void slide_setTitle_toTest_shouldPass()
+    {
+        assertDoesNotThrow(() -> this.slide.setTitle("Test"));
+        assertEquals("Test", this.slide.getTitle());
+    }
 }

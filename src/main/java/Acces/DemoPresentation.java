@@ -19,7 +19,7 @@ class DemoPresentation extends Accessor
     ItemCreator bitmapItemCreator = new BitmapItemCreator();
     public void loadFile(Presentation presentation, String unusedFilename) 
     {
-        presentation.setTitle("Demo Presentation.Presentation");
+        presentation.setTitle("Demo Presentation");
         Slide slide;
         slide = new Slide();
         slide.setTitle("Presentation.JabberPoint");
