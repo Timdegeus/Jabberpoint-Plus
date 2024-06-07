@@ -2,9 +2,9 @@ name: develop
 run-name: Develop workflow
 on:
     push:
-        branches: [ "main" ]
+        branches: [ "main", "development" ]
     pull_request:
-        branches: [ "main" ]
+        branches: [ "main", "development" ]
     
 jobs:
     # Build app with gradle and run tests
