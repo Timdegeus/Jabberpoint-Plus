@@ -1,5 +1,4 @@
 plugins {
-    id("java")
     id("application")
     id("maven-publish")
 }
@@ -24,7 +23,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/timdegeus/SoftwareQuality")
+            url = uri("https://maven.pkg.github.com/timdegeus/Jabberpoint-Plus")
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")
