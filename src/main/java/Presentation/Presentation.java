@@ -95,7 +95,7 @@ public class Presentation
 		}
 	}
 
-	// Verwijder de presentatie, om klaar te zijn voor de volgende
+	// Verwijder de presentatie,om klaar te zijn voor de volgende
 	public void clear()
 	{
 		this.showList = new ArrayList<Slide>();
