@@ -1,6 +1,5 @@
 plugins {
     id("java")
-    id("org.sonarqube") version "4.4.1.3373"
 }
 
 group = "org.example"
@@ -17,12 +16,4 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
-}
-
-sonar {
-    properties {
-        property("sonar.projectKey", "Timdegeus_Jabberpoint-Plus")
-        property("sonar.organization", "timdegeus")
-        property("sonar.host.url", "https://sonarcloud.io")
-    }
 }
