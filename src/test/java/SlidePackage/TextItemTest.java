@@ -68,16 +68,16 @@ public class TextItemTest {
     {
         BufferedImage image = new BufferedImage(1000, 1000, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = image.createGraphics();
-        g.setColor(Color.WHITE); // Ensure the background is non-transparent
+        g.setColor(Color.WHITE); // Check of de achtergrond niet doorzichtbaar is
         g.fillRect(0, 0, image.getWidth(), image.getHeight());
-        g.setColor(style.getColor()); // Set the drawing color
-        g.setFont(style.getFont(1.0f)); // Set the font
+        g.setColor(style.getColor()); // Stel de teken kleur in
+        g.setFont(style.getFont(1.0f)); // stel het font in
         float scale = 1.0f;
         textItem.draw(10, 10, scale, g, style, null);
-        g.dispose(); // Dispose of the graphics context
+        g.dispose();
 
-        // Check if the graphics object has been drawn upon
-        int pixelColor = image.getRGB(10, 10); // An arbitrary pixel to check
-        assertNotEquals(0, pixelColor); // The pixel should not be fully transparent
+        int pixelColor = image.getRGB(10, 10); // Een willekeurige pixel om te checken
+        assertNotEquals(0, pixelColor);
+        // De pixel moet niet transparant zijn omdat er anders niks getekent is
     }
 }
