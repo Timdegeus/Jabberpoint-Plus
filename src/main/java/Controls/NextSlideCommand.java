@@ -21,6 +21,6 @@ public class NextSlideCommand implements Command
     @Override
     public void execute()
     {
-        presentation.nextSlide();
+        this.presentation.nextSlide();
     }
 }

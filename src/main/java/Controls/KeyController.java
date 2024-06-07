@@ -17,11 +17,18 @@ import java.awt.event.KeyAdapter;
 
 public class KeyController extends KeyAdapter
 {
-	private Presentation presentation; // Er worden commando's gegeven aan de presentatie
+	private final Presentation presentation; // Er worden commando's gegeven aan de presentatie
+
+	private final Command NEXT_SLIDE_COMMAND;
+	private final Command PREVIOUS_SLIDE_COMMAND;
+	private final Command EXIT_COMMAND;
 
 	public KeyController(Presentation p)
 	{
-		presentation = p;
+		this.presentation = p;
+		this.NEXT_SLIDE_COMMAND = new NextSlideCommand(this.presentation);
+		this.PREVIOUS_SLIDE_COMMAND = new PreviousSlideCommand(this.presentation);
+		this.EXIT_COMMAND = new ExitCommand(this.presentation);
 	}
 
 	public void keyPressed(KeyEvent keyEvent)
@@ -32,18 +39,18 @@ public class KeyController extends KeyAdapter
 			case KeyEvent.VK_DOWN:
 			case KeyEvent.VK_ENTER:
 			case '+':
-				new NextSlideCommand(presentation).execute();
+				NEXT_SLIDE_COMMAND.execute();
 				break;
 
 			case KeyEvent.VK_PAGE_UP:
 			case KeyEvent.VK_UP:
 			case '-':
-				new PreviousSlideCommand(presentation).execute();
+				PREVIOUS_SLIDE_COMMAND.execute();
 				break;
 
 			case 'q':
 			case 'Q':
-				new ExitCommand(presentation).execute();
+				EXIT_COMMAND.execute();
 				break; // wordt nooit bereikt als het goed is
 
 			default:

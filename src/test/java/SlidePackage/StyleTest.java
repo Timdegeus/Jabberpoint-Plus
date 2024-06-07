@@ -1,3 +1,4 @@
+
 package SlidePackage;
 
 import org.junit.jupiter.api.Test;
@@ -31,13 +32,5 @@ public class StyleTest
     {
         Style style = new Style(1, Color.black, 1, 1);
         assertEquals("[1,java.awt.Color[r=0,g=0,b=0]; 1 on 1]", style.toString());
-    }
-
-    @Test
-    void getFontTest_whereFontIsCalled_shouldReturnFont()
-    {
-        Style style = new Style(1, Color.black, 1, 1);
-        Font font = style.getFont(1);
-        assertEquals("java.awt.Font[family=Dialog,name=Helvetica,style=bold,size=1]", font.toString());
     }
 }

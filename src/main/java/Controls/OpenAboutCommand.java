@@ -23,6 +23,6 @@ public class OpenAboutCommand implements Command
     @Override
     public void execute()
     {
-        AboutBox.show(parent);
+        AboutBox.show(this.parent);
     }
 }

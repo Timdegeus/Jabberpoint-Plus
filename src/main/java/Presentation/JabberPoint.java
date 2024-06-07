@@ -49,9 +49,7 @@ public class JabberPoint
 		}
 		catch (IOException ex)
 		{
-			JOptionPane.showMessageDialog(null,
-					IOERR + ex, JABERR,
-					JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, IOERR + ex, JABERR, JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

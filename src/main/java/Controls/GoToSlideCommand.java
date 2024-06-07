@@ -32,18 +32,32 @@ public class GoToSlideCommand implements Command
         String pageNumberStr = JOptionPane.showInputDialog((Object) PAGENR);
 
         int pageNumber;
+        int presentationSize = this.presentation.getSize();
 
         if(!Pattern.matches("[a-zA-Z]+", pageNumberStr) && !pageNumberStr.isEmpty())
         {
             pageNumber = Integer.parseInt(pageNumberStr);
-            presentation.setSlideNumber(pageNumber - 1);
+
+            if (pageNumber > 0 && pageNumber <= presentationSize)
+            {
+                this.presentation.setSlideNumber(pageNumber - 1);
+            }
+            else
+            {
+                String errorMessage = "The provided input is not valid. Please enter a number between 1 and " +
+                        presentationSize+  ".\n Provided input: " + pageNumberStr;
+                String title = "Error";
+
+                ErrorBox.show(this.parent, errorMessage, title);
+            }
         }
         else
         {
-            String errorMessage = "The provided input is not valid. Please enter a number.\n Provided input: " + pageNumberStr;
+            String errorMessage = "The provided input is not valid. Please enter a number.\n Provided input: "
+                    + pageNumberStr;
             String title = "Error";
 
-            ErrorBox.show(parent, errorMessage, title);
+            ErrorBox.show(this.parent, errorMessage, title);
         }
     }
 }

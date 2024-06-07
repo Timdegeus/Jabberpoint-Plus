@@ -24,7 +24,7 @@ import SlidePackage.Slide;
 
 public class SlideViewerComponent extends JComponent
 {
-		
+
 	private Slide slide; // de huidige slide
 	private Font labelFont = null; // het font voor labels
 	private Presentation presentation = null; // de presentatie
@@ -50,7 +50,7 @@ public class SlideViewerComponent extends JComponent
 
 	public Dimension getPreferredSize()
 	{
-		return new Dimension(Slide.WIDTH, Slide.HEIGHT);
+		return new Dimension(Slide.getWidth(), Slide.getHeight());
 	}
 
 	public void update(Presentation presentation, Slide data)
@@ -79,12 +79,29 @@ public class SlideViewerComponent extends JComponent
 			return;
 		}
 
-		g.setFont(labelFont);
+		g.setFont(this.labelFont);
 		g.setColor(COLOR);
 
 		g.drawString("Slide " + (1 + this.presentation.getSlideNumber()) + " of " + this.presentation.getSize(), XPOS, YPOS);
 
 		Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 		this.slide.draw(g, area, this);
+	}
+
+	// Getters for testing
+	public Presentation getPresentation() {
+		return presentation;
+	}
+
+	public Slide getSlide() {
+		return slide;
+	}
+
+	public Font getLabelFont() {
+		return labelFont;
+	}
+
+	public JFrame getFrame() {
+		return frame;
 	}
 }

@@ -18,7 +18,8 @@ public class OpenFileCommand implements Command
     private final Presentation presentation;
     private static final String TITLE = "Open file";
 
-    public OpenFileCommand(Frame parent, Presentation presentation) {
+    public OpenFileCommand(Frame parent, Presentation presentation)
+    {
         this.parent = parent;
         this.presentation = presentation;
     }
@@ -32,30 +33,32 @@ public class OpenFileCommand implements Command
     @Override
     public void execute()
     {
-        presentation.clear();
+        this.presentation.clear();
         Accessor xmlAccessor = new XMLAccessor();
         JFileChooser fileChooser = createjFileChooser();
-        fileChooser.showOpenDialog(parent);
+        fileChooser.showOpenDialog(this.parent);
 
         try
         {
-            xmlAccessor.loadFile(presentation, fileChooser.getSelectedFile().getPath());
-            presentation.setSlideNumber(0);
+            xmlAccessor.loadFile(this.presentation, fileChooser.getSelectedFile().getPath());
+            this.presentation.setSlideNumber(0);
         }
         catch (IOException exc)
         {
-            JOptionPane.showMessageDialog(parent, IOEX + exc, LOADERR, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this.parent, IOEX + exc, LOADERR, JOptionPane.ERROR_MESSAGE);
         }
 
-        parent.repaint();
+        this.parent.repaint();
     }
 
     //creates a JFileChooser which only shows xml files
-    private static JFileChooser createjFileChooser() {
+    private static JFileChooser createjFileChooser()
+    {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileFilter(new FileFilter()
         {
-            public String getDescription() {
+            public String getDescription()
+            {
                 return "XML files (*.xml)";
             }
 
@@ -64,14 +67,17 @@ public class OpenFileCommand implements Command
                 if (f.isDirectory())
                 {
                     return true;
-                } else
+                }
+                else
                 {
                     String filename = f.getName().toLowerCase();
+
                     return filename.endsWith(".xml");
                 }
             }
         }
         );
+
         return fileChooser;
     }
 }

@@ -21,6 +21,6 @@ public class ExitCommand implements Command
     @Override
     public void execute()
     {
-        presentation.exit(0);
+        this.presentation.exit(0);
     }
 }

@@ -73,6 +73,7 @@ public class XMLAccessor extends Accessor
 
             NodeList slides = doc.getElementsByTagName(SLIDE);
             max = slides.getLength();
+
             for (slideNumber = 0; slideNumber < max; slideNumber++) 
             {
                 Element xmlSlide = (Element) slides.item(slideNumber);
@@ -82,6 +83,7 @@ public class XMLAccessor extends Accessor
 
                 NodeList slideItems = xmlSlide.getElementsByTagName(ITEM);
                 maxItems = slideItems.getLength();
+
                 for (itemNumber = 0; itemNumber < maxItems; itemNumber++) 
                 {
                     Element item = (Element) slideItems.item(itemNumber);

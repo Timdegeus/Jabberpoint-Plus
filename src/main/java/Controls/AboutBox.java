@@ -27,12 +27,6 @@ public class AboutBox
 
 	public static void show(Frame parent)
 	{
-		JOptionPane.showMessageDialog(parent,
-
-				ABOUT_MESSAGE,
-				TITLE,
-
-				JOptionPane.INFORMATION_MESSAGE
-		);
+		JOptionPane.showMessageDialog(parent, ABOUT_MESSAGE, TITLE, JOptionPane.INFORMATION_MESSAGE);
 	}
 }

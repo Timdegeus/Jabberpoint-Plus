@@ -21,11 +21,11 @@ public class Style
 	private static Style[] styles; // de styles
 	
 	private static final String FONTNAME = "Helvetica";
-	int indent;
-	Color color;
-	Font font;
-	int fontSize;
-	int leading;
+	private int indent;
+	private Color color;
+	private Font font;
+	private int fontSize;
+	private int leading;
 
 	public static void createStyles()
 	{
@@ -53,17 +53,36 @@ public class Style
 	{
 		this.indent = indent;
 		this.color = color;
-		font = new Font(FONTNAME, Font.BOLD, fontSize=points);
+		this.font = new Font(FONTNAME, Font.BOLD, fontSize=points);
 		this.leading = leading;
+	}
+
+	public int getIndent()
+	{
+		return indent;
+	}
+
+	public Color getColor()
+	{
+		return color;
+	}
+
+	public Font getFont()
+	{
+		return font;
+	}
+	public int getLeading()
+	{
+		return leading;
 	}
 
 	public String toString()
 	{
-		return "["+ indent + "," + color + "; " + fontSize + " on " + leading +"]";
+		return "["+ this.indent + "," + this.color + "; " + this.fontSize + " on " + this.leading +"]";
 	}
 
 	public Font getFont(float scale)
 	{
-		return font.deriveFont(fontSize * scale);
+		return font.deriveFont(this.fontSize * scale);
 	}
 }
