@@ -1,6 +1,7 @@
 plugins {
     id("java")
-    id("org.sonarqube") version "4.4.1.3373"
+    id("application")
+    id("maven-publish")
 }
 
 group = "org.example"
@@ -19,10 +20,15 @@ tasks.test {
     useJUnitPlatform()
 }
 
-sonar {
-    properties {
-        property("sonar.projectKey", "Timdegeus_Jabberpoint-Plus")
-        property("sonar.organization", "timdegeus")
-        property("sonar.host.url", "https://sonarcloud.io")
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/timdegeus/SoftwareQuality")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
     }
 }
